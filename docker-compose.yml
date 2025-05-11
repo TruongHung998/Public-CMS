@@ -13,8 +13,3 @@ services:
       DATABASE_USERNAME: strapi
       DATABASE_PASSWORD: strapi123
       NODE_ENV: production
-    depends_on:
-      - db
-
-volumes:
-  pgdata:
