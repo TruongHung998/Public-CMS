@@ -14,21 +14,20 @@ services:
       - "5432:5432"
 
   strapi:
-    image: strapi/strapi:latest
-    container_name: strapi
-    environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_NAME: strapi
-      DATABASE_USERNAME: strapi
-      DATABASE_PASSWORD: strapi
-    volumes:
-      - ./data:/srv/app
+    build: .
+    container_name: strapi-app
     ports:
       - "1337:1337"
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: strapi
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+      NODE_ENV: production
     depends_on:
-      - postgres
+      - db
 
 volumes:
   postgres_data:
