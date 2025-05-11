@@ -8,14 +8,9 @@ WORKDIR /app
 COPY package.json ./
 COPY yarn.lock ./
 
-# Install dependencies
-RUN yarn install
 
 # Copy rest of the project
 COPY . .
-
-# Build the Strapi admin panel
-RUN yarn build
 
 # Expose the port Strapi runs on
 EXPOSE 1337
